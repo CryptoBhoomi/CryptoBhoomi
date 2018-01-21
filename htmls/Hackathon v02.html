@@ -1,0 +1,255 @@
+<html>
+<head>
+<title>Karnataka Land Registration</title>
+<link rel="stylesheet" type="text/css" href="./jquery-ui.css" />
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./jquery-ui.js"></script>
+</head>
+<body>
+	Please Enter the Contract Id : 
+	<input type="text" id="txtContractHash" /> <input type="button" value="search" id="contractSearch"/>
+	
+	Role : <select id="selRole"><option value="">Select</option> <option value="Other">Other</option><option value="Registrar">Registrar</option><option value="Owner">Owner</option><option value="Buyer">Buyer</option><option value="Revenue">Revenue</option><option value="Legal">Legal</option><option value="Forest">Forest</option><option value="Finance">Bank/FI</option></select> 
+	<script type="text/javascript" >
+	$("#selRole").on("change", function(){
+		switch($(this).val()){
+			case "Registrar":
+				$( "#actortabs" ).tabs({ active: 3 });
+				break;
+			case "Owner":
+				$( "#actortabs" ).tabs({ active: 1 });
+				break;
+			case "Buyer":
+				$( "#actortabs" ).tabs({ active: 2 });
+				break;
+			case "Revenue":
+				$( "#actortabs" ).tabs({ active: 4 });
+				break;
+			case "Legal":
+				$( "#actortabs" ).tabs({ active: 5 });
+				break;
+			case "Forest":
+				$( "#actortabs" ).tabs({ active: 6 });
+				break;
+			case "Finance":
+				$( "#actortabs" ).tabs({ active: 7 });
+				break;
+			default :
+				$( "#actortabs" ).tabs({ active: 0 });
+				break;
+		}
+	});
+	</script>
+<div id="page">	
+	<div id="actortabs" >
+		<ul>
+			<li><a href='#tabOther'>Other</a></li>
+			<li><a href='#tabOwner'>Owner</a></li>
+			<li><a href='#tabBuyer'>Buyer</a></li>
+			<li><a href='#tabRegistrar'>Registrar</a></li>
+			<li><a href='#tabRevenue'>Survey/Revenue</a></li>
+			<li><a href='#tabLegal'>Legal</a></li>
+			<li><a href='#tabForest'>Forest</a></li>
+			<li><a href='#tabFinance'>Bank/FI</a></li>
+		</ul>
+		<div id="tabOther">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+		</div>
+		<div id="tabOwner">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label> <br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+			
+			Buyer txnHash : <input type="text" value=""></input> <br />
+			<input type="button" id="btnOwnerIntiaiteSale" value="Initiate Sale & Add Buyer" ></input>  <br />
+			<input type="button" id="btnOwnerConfirmSale" value="Confirm Sale" ></input>  <br /><br /><br />
+			
+			
+			Legal Status : <label id="lblBuyerLegalStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Forest Status : <label id="lblBuyerForestStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Revenue Status : <label id="lblBuyerRevenueStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Bank/FI Status : <label id="lblBuyerBankStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+		</div>
+		<div id="tabBuyer">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+			<input type="button" id="btnBuyerConfirmSale" value="Agree to Buy" ></input>  <br />
+			
+			
+			Registration Status : <label id="lblBuyerRegistrationStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			<input type="button" id="btnBuyerConfirmTax" value="Confirm Tax Payment" ></input>  <br /><br /><br />
+			
+			Legal Status : <label id="lblBuyerLegalStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Forest Status : <label id="lblBuyerForestStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Revenue Status : <label id="lblBuyerRevenueStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			Bank/FI Status : <label id="lblBuyerBankStatus" class="text ui-widget-content ui-corner-all"></label> <br />
+			
+		</div>
+		<div id="tabRegistrar">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br /><br /><br />
+			</fieldset>
+			Sale Amount : <input type="text" class="text ui-widget-content ui-corner-all" id="txtSaleAmount" ></input>
+			Registration Tax : <input type="text" class="text ui-widget-content ui-corner-all" id="txtRegistrationTax"></input> <br />
+			<input type="button" value="Initiate Registration" id="btnInitiateRegistration" ></input> 
+			<input type="button" value="Transfer Deed" id="btnTransferDeed" ></input> <br />
+		</div>
+		<div id="tabRevenue">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+			Revenue Issue: <input type="checkbox" id="cbRevenue" ></input>
+			Remarks<input type="text" id="txtRevenueRemarks"></input> <br />
+			TxHash on Revenue Dept data <input type="text" id="txRevenueTxHash"></input>
+			<input type="button" value="Update Revenue Status" id="txtRevenueUpdate"></input>
+		</div>
+		<div id="tabLegal">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">ABCDEFGHIJ</label> <br /><br /><br />
+			</fieldset>
+			Legal Issue: <input type="checkbox" id="cbLegal" ></input>
+			Remarks<input type="text" id="txtLegalRemarks"></input> <br />
+			TxHash on Legal Dept data <input type="text" id="txtLegalTxHash"></input>
+			<input type="button" value="Update Legal Status" id="btnLegalUpdate"></input>
+		</div>
+		<div id="tabForest">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+			Forest Issue: <input type="checkbox" id="cbForest" ></input>
+			Remarks<input type="text" id="txtForestRemarks"></input> <br />
+			Txhash on Forest Dept data <input type="text" id="txtForestTxHash"></input>
+			<input type="button" value="Update Forest Status" id="btnForestUpdate"></input>
+		</div>
+		<div id="tabFinance">
+			Owner Name :<label id="txtOwnerName" class="text ui-widget-content ui-corner-all">Hari</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Property Id :<label id="txtPropertyId" class="text ui-widget-content ui-corner-all">111/111-1111</label><br /><br />
+			<fieldset>
+			<legend>Property Address</legend>
+				Flat/House No: <label id="txtHouseNo" class="text ui-widget-content ui-corner-all">A-207</label> <br />
+				Road/Street : <label id="txtStreet" class="text ui-widget-content ui-corner-all">Nallappa Gardens</label> <br />
+				Area : <label id="txtArea" class="text ui-widget-content ui-corner-all">Kadubeesanahalli</label> <br />
+				City : <label id="txtCity" class="text ui-widget-content ui-corner-all">Bangalore</label> PIN: <label id="txtPIN" class="text ui-widget-content ui-corner-all">560087</label> <br /><br /><br />
+			</fieldset>
+			Finance Update: <input type="checkbox" id="cbFinance" ></input>
+			Remarks<input type="text" id="txtFinanceRemarks"></input>
+			<input type="button" value="Update Mortgage Status" id="btnBankUpdate"></input>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	 
+	 $(document).ready(function(){
+		$("#actortabs").tabs();
+		$("#page").hide();
+	 });
+	
+	/*
+	var dataObject = new Object();
+	dataObject["address"] = $.parseJSON("{'HouseNo':'207','Address1':'Nallappa gardens','Address2':'Kadubeesanahalli','Survey No':'100/1','PinCode':'560087',}");
+	data["propertyId"] = "propertyId";
+	data["OwnerName"] = "ownername";
+	data["ownerpassphrase"] = "ownerpassphrase";
+	data["buyerpassphrase"] = "buyerpassphrase";
+	data["registrarpassphrase"] = "registrarpassphrase";
+	data["financepassphrase"] = "financepassphrase";
+	data["legalpassphrase"] = "legalpassphrase";
+	data["forestpassphrase"] = "forestpassphrase";
+	data["revenuepassphrase"] = "revenuepassphrase";
+	data["otherpassphrase"] = "otherpassphrase";
+	data["currentState"] = "";
+	data["buyerName"] = "buyername";
+	data["legalStatus"] = $.parseJSON("{'Status':'False', 'Remarks' : 'Case No- : L1. Has a problem'}");
+	data["ForestStatus"] = $.parseJSON("{'Status':'False', 'Remarks' : 'Case No- : F1. This is forest land'}");
+	data["RevenueStatus"] = $.parseJSON("{'Status':'False', 'Remarks' : 'Case No- : R1. This is forest land'}");
+	data["registrar"] = $.parseJSON("{'Registration Amount':'2500000', 'Registration Tax' : '100000'}")
+	*/
+	
+	 $("#contractSearch").on("click", function(){
+		//Call the contract here and get the data.
+		//Load the JSON object
+		$("#page").show();
+	 });
+	 
+	 $("#txtFinanceRemarks").on("change", function(){
+		$("#tabOwner #lblBuyerBankStatus").text( "Problem : " +(($("#cbFinance"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtFinanceRemarks").val());
+		$("#tabBuyer #lblBuyerBankStatus").text( "Problem : " +(($("#cbFinance"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtFinanceRemarks").val());
+	 });
+	 $("#cbFinance").on("change", function(){
+		$("#tabOwner #lblBuyerBankStatus").text( "Problem : " +(($("#cbFinance"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtFinanceRemarks").val());
+		$("#tabBuyer #lblBuyerBankStatus").text( "Problem : " +(($("#cbFinance"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtFinanceRemarks").val());
+	 });
+	 $("#txtLegalRemarks").on("change", function(){
+		$("#tabOwner #lblBuyerLegalStatus").text( "Problem : " +(($("#cbLegal"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtLegalRemarks").val());
+		$("#tabBuyer #lblBuyerLegalStatus").text( "Problem : " +(($("#cbLegal"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtLegalRemarks").val());
+	 });
+	 $("#cbLegal").on("change", function(){
+		$("#tabOwner #lblBuyerLegalStatus").text( "Problem : " +(($("#cbLegal"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtLegalRemarks").val());
+		$("#tabBuyer #lblBuyerLegalStatus").text( "Problem : " +(($("#cbLegal"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtLegalRemarks").val());
+	 });
+	 $("#txtRevenueRemarks").on("change", function(){
+		$("#tabOwner #lblBuyerRevenueStatus").text( "Problem : " +(($("#cbRevenue"). is(":checked") == true)? "Yes" : "No") + " Remarks : " + $("#txtRevenueRemarks").val());
+		$("#tabBuyer #lblBuyerRevenueStatus").text( "Problem : " +(($("#cbRevenue"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtRevenueRemarks").val());
+	 });
+	 $("#cbRevenue").on("change", function(){
+		$("#tabOwner #lblBuyerRevenueStatus").text( "Problem : " +(($("#cbRevenue"). is(":checked") == true)? "Yes" : "No") + " Remarks : " + $("#txtRevenueRemarks").val());
+		$("#tabBuyer #lblBuyerRevenueStatus").text( "Problem : " +(($("#cbRevenue"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtRevenueRemarks").val());
+	 });
+	 $("#txtForestRemarks").on("change", function(){
+		$("#tabOwner #lblBuyerForestStatus").text( "Problem : " +(($("#cbForest"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtForestRemarks").val());
+		$("#tabBuyer #lblBuyerForestStatus").text( "Problem : " +(($("#cbForest"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtForestRemarks").val());
+	 });
+	 $("#cbForest").on("change", function(){
+		$("#tabOwner #lblBuyerForestStatus").text( "Problem : " +(($("#cbForest"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtForestRemarks").val());
+		$("#tabBuyer #lblBuyerForestStatus").text( "Problem : " +(($("#cbForest"). is(":checked")== true)? "Yes" : "No") + " Remarks : " + $("#txtForestRemarks").val());
+	 });
+	 $("#actortabs ul li").hide();
+</script>
+</body>
+</html>
