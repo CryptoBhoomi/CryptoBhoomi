@@ -36,26 +36,20 @@ contract Land {
     string ownerName,
     string addressStr,
     string propertyId,
-    address buyer,
-    string buyerName,
     address registrar,
     address revenueDept,
     address legalDept,
     address forestDept,
-    address bank,
-    string amountStr){
+    address bank){
         Property memory property;
         property.ownerName = ownerName;
         property.addressStr = addressStr;
         property.propertyId = propertyId;
-        property.buyer = buyer;
-        property.buyerName = buyerName;
         property.registrar = registrar;
         property.revenueDept = revenueDept;
         property.legalDept = legalDept;
         property.forestDept = forestDept;
         property.bank = bank;
-        property.amountStr = amountStr;
         LandTrail[TrailCount] = property;
         state = LandState.Default;
         TrailCount++;
@@ -73,8 +67,12 @@ contract Land {
         return TrailCount;
     }
 
-    function InitiateSale(){
+    function InitiateSale(address buyer, string buyerName){
         if (msg.sender == propertyOwner && state == LandState.Default) {
+            Property memory property = LandTrail[TrailCount - 1];
+            property.buyer = buyer;
+            LandTrail[TrailCount] = property;
+            TrailCount++;
             state = LandState.SaleInitiated;
             reportTrail[ReportTrailCount]= "Sale Initiated";
             ReportTrailCount++;
@@ -85,8 +83,12 @@ contract Land {
         }
     }
 
-    function BuyerAgreeSale(){
+    function BuyerAgreeSale(string amountStr){
         if (msg.sender == LandTrail[TrailCount - 1].buyer && state == LandState.SaleInitiated) {
+            Property memory property = LandTrail[TrailCount - 1];
+            property.amountStr = amountStr;
+            LandTrail[TrailCount] = property;
+            TrailCount++;
             state = LandState.BuyerSaleAgreed;
             reportTrail[ReportTrailCount]= "Buyer Sale Agreed";
             ReportTrailCount++;
@@ -115,6 +117,7 @@ contract Land {
             Property memory property = LandTrail[TrailCount - 1];
             property.amountStr = amountStr;
             LandTrail[TrailCount] = property;
+            TrailCount++;
             reportTrail[ReportTrailCount]= "Registrar Sale Approve";
             ReportTrailCount++;
             Report("Registrar", "Registrar Sale Approve", now, msg.sender);
@@ -155,7 +158,7 @@ contract Land {
         }
     }
 
-    function reportPropertyDiscrepancy(string department, string remark){
+    function ReportPropertyDiscrepancy(string department, string remark){
         if (msg.sender == LandTrail[TrailCount - 1].revenueDept ||
         msg.sender == LandTrail[TrailCount - 1].legalDept ||
         msg.sender == LandTrail[TrailCount - 1].forestDept ||
@@ -179,13 +182,14 @@ contract Land {
         );
     }
 
-    function GetPropertyDetails() returns (string,string,string,string,string){
+    function GetPropertyDetails() returns (string,string,string,string,string, LandState){
         return (
         LandTrail[TrailCount-1].ownerName,
         LandTrail[TrailCount-1].addressStr,
         LandTrail[TrailCount-1].propertyId,
         LandTrail[TrailCount-1].buyerName,
-        LandTrail[TrailCount-1].amountStr
+        LandTrail[TrailCount-1].amountStr,
+        state
         );
     }
 
